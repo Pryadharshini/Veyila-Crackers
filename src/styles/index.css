@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --rail: 1.5rem;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Tamil sits noticeably smaller than Latin at the same px size. */
+  :lang(ta),
+  .ta {
+    @apply font-tamil;
+    font-size: 1.04em;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-paper;
+    font-weight: 700;
+  }
+
+  ::selection {
+    background: #e23b26;
+    color: #f3e9d8;
+  }
+
+  :focus-visible {
+    outline: 2px solid #e9b44c;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar — thin brass line on the night ground. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #120b0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #33201c;
+    border-radius: 99px;
+    border: 3px solid #120b0a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4a2f28;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  /* ---- structural ------------------------------------------------ */
+
+  .shell {
+    @apply mx-auto w-full max-w-[86rem] px-5 sm:px-8 lg:px-12;
+  }
+
+  .rule {
+    @apply h-px w-full bg-gold-line opacity-40;
+  }
+
+  /* Small caps label used for every eyebrow on the site. */
+  .eyebrow {
+    @apply font-mono text-2xs uppercase tracking-[0.28em] text-gold/70;
+  }
+
+  /* ---- surfaces --------------------------------------------------- */
+
+  /* The signature surface: the shop's paper price list, laid on the dark. */
+  .sheet {
+    @apply relative bg-paper text-ink shadow-sheet;
+    background-image:
+      repeating-linear-gradient(
+        180deg,
+        transparent 0,
+        transparent 43px,
+        rgba(18, 11, 10, 0.055) 43px,
+        rgba(18, 11, 10, 0.055) 44px
+      ),
+      linear-gradient(180deg, #f6eddd 0%, #f0e4cf 100%);
+  }
+
+  /* Torn bottom edge, like a receipt pulled off the roll. The ellipse is
+     anchored to the bottom of each 12px tile, so only the foot is bitten. */
+  .sheet-torn {
+    -webkit-mask-image: radial-gradient(6px 8px at 6px 100%, transparent 98%, #000 100%);
+    -webkit-mask-size: 12px 100%;
+    -webkit-mask-repeat: repeat-x;
+    mask-image: radial-gradient(6px 8px at 6px 100%, transparent 98%, #000 100%);
+    mask-size: 12px 100%;
+    mask-repeat: repeat-x;
+  }
+
+  .glass {
+    @apply border border-paper/10 bg-ink-800/60 backdrop-blur-xl;
+  }
+
+  .card-night {
+    @apply relative overflow-hidden rounded-card border border-ink-600 bg-ink-800/70 transition-colors duration-300;
+  }
+  .card-night:hover {
+    @apply border-gold/35;
+  }
+
+  /* ---- controls --------------------------------------------------- */
+
+  .btn {
+    @apply relative inline-flex select-none items-center justify-center gap-2 rounded-pill px-6 py-3 font-mono text-2xs uppercase tracking-[0.18em] transition-all duration-300 ease-out disabled:pointer-events-none disabled:opacity-40;
+  }
+  .btn-ember {
+    @apply bg-ember text-paper shadow-[0_18px_40px_-18px_rgba(226,59,38,.9)];
+  }
+  .btn-ember:hover {
+    @apply bg-ember-bright shadow-[0_22px_50px_-16px_rgba(255,83,52,1)];
+  }
+  .btn-ghost {
+    @apply border border-paper/20 text-paper/85;
+  }
+  .btn-ghost:hover {
+    @apply border-gold/60 bg-gold/10 text-paper;
+  }
+  .btn-gold {
+    @apply bg-gold text-ink;
+  }
+  .btn-gold:hover {
+    @apply bg-gold-soft;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-ink-600 bg-ink-800/80 px-4 py-3 text-sm text-paper placeholder:text-paper/35 transition-colors focus:border-gold/60 focus:outline-none;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-pill border border-ink-600 px-3 py-1.5 font-mono text-2xs uppercase tracking-[0.14em] text-[#32080B] transition-colors hover:border-gold/50 hover:text-[#32080B];
+  }
+  .chip-on {
+    @apply border-gold/70 bg-gold/15 text-[#32080B];
+  }
+
+  /* ---- type ------------------------------------------------------- */
+
+  .num {
+    @apply font-mono tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  .strike {
+    @apply relative text-paper/35;
+  }
+  .strike::after {
+    content: '';
+    @apply absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-ember/70;
+  }
+
+  /* Skeleton shimmer for lazy content. */
+  .shimmer {
+    @apply relative overflow-hidden bg-ink-700;
+  }
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0 animate-sweep bg-gradient-to-r from-transparent via-paper/[0.07] to-transparent;
+  }
+}
+
+@layer utilities {
+  .grain::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 z-[1] bg-grain opacity-[0.055] mix-blend-overlay;
+  }
+
+  .edge-fade {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .no-bar {
+    scrollbar-width: none;
+  }
+  .no-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
