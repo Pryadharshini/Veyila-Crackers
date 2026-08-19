@@ -25,14 +25,6 @@ function CartMark({ size = 15 }) {
   );
 }
 
-function HeartMark({ size = 15, filled = false }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20.3 5.7a5 5 0 0 0-7.1 0l-1.2 1.2-1.2-1.2a5 5 0 1 0-7.1 7.1l8.3 8.3 8.3-8.3a5 5 0 0 0 0-7.1z" />
-    </svg>
-  );
-}
-
 /* Real photo when the product has one; otherwise (and if the photo fails
    to load) fall back to the generated catalogue-style drawing so the grid
    never shows a broken image.
@@ -88,7 +80,6 @@ export default function ProductCard({ product, index = 0, priority = false }) {
   const inSheet = qtyOf(product.slug);
 
   const [draft, setDraft] = useState(1);
-  const [saved, setSaved] = useState(false);
   const shown = inSheet > 0 ? inSheet : draft;
 
   const step = (delta) => {

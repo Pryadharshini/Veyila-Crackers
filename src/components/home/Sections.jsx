@@ -217,7 +217,7 @@ export function CategoryRail() {
 
           <Link
             to="/categories"
-            className="flex items-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-[#d7722d] transition-colors hover:text-ember"
+            className="flex items-center gap-2 font-mono text-[0.70rem] uppercase tracking-[0.18em] text-[##32080B] transition-colors hover:text-ember"
           >
             View all categories
             <Icon name="arrow" size={13} />
