@@ -79,7 +79,7 @@ export default function MobileMenu({ open, onClose, onSearch }) {
                 Browse
               </motion.p>
               <ul className="mb-9 space-y-1">
-                {[{ to: '/', label: 'Home' }, ...NAV].map((item) => (
+                {NAV.map((item) => (
                   <motion.li key={item.to} variants={row}>
                     <Link
                       to={item.to}

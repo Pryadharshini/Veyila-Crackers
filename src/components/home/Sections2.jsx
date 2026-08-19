@@ -434,12 +434,20 @@ export function ClosingCta() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {totals.count > 0 ? (
               <>
-                <ActionButton to="/cart" variant="ember" className="!px-8 !py-4">
-                  Review and send
-                </ActionButton>
-                <button type="button" onClick={openDrawer} className="btn btn-ghost !px-8 !py-4">
-                  Peek at the sheet
-                </button>
+              <ActionButton
+  to="/cart"
+  variant="ember"
+  className="!bg-[#32080B] !border-[#32080B] !px-8 !py-4"
+>
+  Review and send
+</ActionButton>
+<button
+  type="button"
+  onClick={openDrawer}
+  className="btn btn-ghost !px-8 !py-4 !font-bold !bg-[#32080B] !text-white"
+>
+  Peek at the sheet
+</button>
               </>
             ) : (
               <>
