@@ -25,14 +25,6 @@ function CartMark({ size = 15 }) {
   );
 }
 
-function HeartMark({ size = 15, filled = false }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20.3 5.7a5 5 0 0 0-7.1 0l-1.2 1.2-1.2-1.2a5 5 0 1 0-7.1 7.1l8.3 8.3 8.3-8.3a5 5 0 0 0 0-7.1z" />
-    </svg>
-  );
-}
-
 /* Real photo when the product has one; otherwise (and if the photo fails
    to load) fall back to the generated catalogue-style drawing so the grid
    never shows a broken image.
@@ -88,7 +80,6 @@ export default function ProductCard({ product, index = 0, priority = false }) {
   const inSheet = qtyOf(product.slug);
 
   const [draft, setDraft] = useState(1);
-  const [saved, setSaved] = useState(false);
   const shown = inSheet > 0 ? inSheet : draft;
 
   const step = (delta) => {
@@ -108,7 +99,7 @@ export default function ProductCard({ product, index = 0, priority = false }) {
       }`}
     >
       {product.discount > 0 && (
-        <span className="num absolute left-2 top-2 z-10 rounded-md bg-[#e73a2a] px-2 py-[3px] text-[0.56rem] font-bold uppercase tracking-[0.04em] text-white">
+        <span className="num absolute left-2 top-2 z-10 rounded-md bg-[#32080B] px-2 py-[3px] text-[0.56rem] font-bold uppercase tracking-[0.04em] text-white">
           {product.discount}% OFF
         </span>
       )}
@@ -131,7 +122,7 @@ export default function ProductCard({ product, index = 0, priority = false }) {
 
         <div className="mt-2 flex items-baseline gap-2">
           <span className="num strike text-[0.82rem] text-[#b3aaa2]">{money(product.mrp)}</span>
-          <span className="num text-[1.02rem] font-bold text-[#e73a2a]">{money(product.price)}</span>
+          <span className="num text-[1.02rem] font-bold text-[#32080B]">{money(product.price)}</span>
         </div>
 
         <p className="mb-3 mt-1 text-[0.72rem] text-[#8a8078]">{product.unit}</p>
@@ -162,22 +153,10 @@ export default function ProductCard({ product, index = 0, priority = false }) {
           <button
             type="button"
             onClick={() => (inSheet > 0 ? setQty(product.slug, inSheet + draft) : add(product.slug, draft))}
-            className="grid h-8 w-9 shrink-0 place-items-center rounded-md bg-[#e73a2a] text-white transition-colors hover:bg-[#cf2f21]"
+            className="grid h-8 w-9 shrink-0 place-items-center rounded-md bg-[#32080B] text-white transition-colors hover:bg-[#4a1115]"
             aria-label={`Put ${shown} × ${product.name} on your order sheet`}
           >
             <CartMark />
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setSaved((value) => !value)}
-            aria-pressed={saved}
-            className={`grid h-8 w-8 shrink-0 place-items-center rounded-md border transition-colors ${
-              saved ? 'border-[#e73a2a]/40 text-[#e73a2a]' : 'border-[#e5e0da] text-[#a49a92] hover:text-[#e73a2a]'
-            }`}
-            aria-label={saved ? `Remove ${product.name} from saved` : `Save ${product.name} for later`}
-          >
-            <HeartMark filled={saved} />
           </button>
         </div>
       </div>

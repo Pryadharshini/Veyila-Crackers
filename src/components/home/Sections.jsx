@@ -41,14 +41,14 @@ export function AssuranceStrip() {
                 className="group relative flex min-h-[132px] items-center gap-4 rounded-[1.25rem] bg-white px-4 py-5 text-left sm:px-5"
               >
                 {index !== 0 && <span className="absolute left-0 top-5 hidden h-[calc(100%-2.5rem)] w-px bg-stone-200 lg:block" />}
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#fff1d9] text-[#d66a1e] shadow-[inset_0_0_0_1px_rgba(214,106,30,0.08)]">
-                  <Icon name={icon} size={24} strokeWidth={2.75} className="text-[#d66a1e]" filled={icon === 'check'} />
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#fff1d9] text-[#32080B] shadow-[inset_0_0_0_1px_rgba(50,8,11,0.08)]">
+                  <Icon name={icon} size={24} strokeWidth={2.75} className="text-[#32080B]" filled={icon === 'check'} />
                 </span>
                 <div className="min-w-0">
-                  <h3 className="mb-1 font-mono text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#d66a1e]">
+                  <h3 className="mb-1 font-mono text-[0.68rem] font-bold uppercase tracking-[0.22em] text-[#32080B]">
                     {title}
                   </h3>
-                  <p className="text-[0.9rem] font-semibold leading-relaxed text-[#2c241f]">{body}</p>
+                  <p className="text-[0.9rem] font-semibold leading-relaxed text-[#32080B]">{body}</p>
                 </div>
               </Reveal>
             ))}
@@ -206,7 +206,7 @@ export function CategoryRail() {
   return (
     <section className="relative bg-white py-14 lg:py-20">
       <div className="shell">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <div className="relative mb-8 flex w-full items-center justify-center">
           <div className="flex items-center gap-3 text-[#d7722d]">
             <span className="text-base leading-none">✦</span>
             <h2 className="font-display text-xl font-bold uppercase tracking-[0.05em] text-[#32080B] sm:text-2xl">
@@ -217,7 +217,7 @@ export function CategoryRail() {
 
           <Link
             to="/categories"
-            className="flex items-center gap-2 font-mono text-[0.70rem] uppercase tracking-[0.18em] text-[##32080B] transition-colors hover:text-ember"
+            className="absolute right-0 hidden items-center gap-2 font-mono text-[0.70rem] uppercase tracking-[0.18em] text-[#32080B] transition-colors hover:text-ember sm:flex"
           >
             View all categories
             <Icon name="arrow" size={13} />
@@ -228,28 +228,28 @@ export function CategoryRail() {
       <div className="relative mx-auto max-w-[1300px]">
         <div
           ref={scrollerRef}
-          className="grid auto-cols-[78%] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-6 pb-2 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-8 md:auto-cols-[33%] lg:auto-cols-[calc((100%-4*1.25rem)/5)] lg:px-10"
+          className="grid auto-cols-[calc(100%-3rem)] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-6 pb-2 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-8 md:auto-cols-[33%] lg:auto-cols-[calc((100%-4*1.25rem)/5)] lg:px-10"
           style={{ scrollbarWidth: 'none' }}
         >
           {homeCategories.map((category) => (
             <Link
               key={category.id}
               to={`/categories/${category.id}`}
-              className="group flex snap-start flex-col items-center rounded-[1.6rem] border border-[#f5dfc0] bg-[#fff5e6] px-4 py-6 text-center shadow-[0_10px_24px_-20px_rgba(24,18,12,0.4)] transition-transform duration-300 hover:-translate-y-1"
+              className="group flex snap-start flex-col items-center rounded-[1.6rem] border border-[#f5dfc0] bg-[#32080B] px-4 py-6 text-center shadow-[0_10px_24px_-20px_rgba(24,18,12,0.4)] transition-transform duration-300 hover:-translate-y-1"
             >
               <span className="mb-4 grid h-36 w-36 place-items-center overflow-hidden rounded-2xl bg-[#fbe3bf] transition-colors group-hover:bg-[#f8d7a3] sm:h-44 sm:w-44">
                 <img
                   src={CATEGORY_IMAGES[category.id] ?? '/assets/download.jpg'}
                   alt=""
                   loading="lazy"
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full object-cover ${category.id === 'flash-light-crackers' ? 'mix-blend-multiply' : ''}`}
                   aria-hidden="true"
                 />
               </span>
-              <h3 className="text-[1rem] font-semibold leading-snug text-ink transition-colors group-hover:text-ember">
+              <h3 className="text-[1rem] font-semibold leading-snug text-white transition-colors group-hover:text-ember">
                 {category.name}
               </h3>
-              <p className="ta mt-0.5 truncate text-xs text-ink/45">{category.nameTa}</p>
+              <p className="ta mt-0.5 truncate text-xs text-white">{category.nameTa}</p>
             </Link>
           ))}
         </div>
@@ -352,7 +352,7 @@ export function ComboShowcase() {
 
         <div
           ref={scrollerRef}
-          className="grid auto-cols-[78%] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-10 pb-3 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-12 md:auto-cols-[31%] lg:auto-cols-[calc((100%-3*1.25rem)/4)] lg:px-16"
+          className="grid auto-cols-[calc(100%-5rem)] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-10 pb-3 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-12 md:auto-cols-[31%] lg:auto-cols-[calc((100%-3*1.25rem)/4)] lg:px-16"
           style={{ scrollbarWidth: 'none' }}
         >
           {COMBOS.map((combo) => {
@@ -577,7 +577,7 @@ export function PopularPicks() {
 
         <Link
           to="/products"
-          className="mt-6 flex items-center justify-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-[#d76d2d] transition-colors hover:text-ember sm:hidden"
+          className="mt-6 flex items-center justify-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-[#32080B] transition-colors hover:text-ember sm:hidden"
         >
           View all products
           <Icon name="arrow" size={13} />

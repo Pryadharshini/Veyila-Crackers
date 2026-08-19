@@ -153,7 +153,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.66 }}
-              className="mt-9 flex flex-wrap items-center gap-3"
+              className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:justify-start"
             >
               <Link
                 to="/products"
