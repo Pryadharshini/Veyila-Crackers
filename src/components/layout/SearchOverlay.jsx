@@ -93,14 +93,14 @@ export default function SearchOverlay({ open, onClose }) {
                 onChange={(event) => setQuery(event.target.value)}
                 onKeyDown={onKeyDown}
                 placeholder="Name, Tamil name, or line number…"
-                className="h-16 flex-1 bg-transparent text-base text-paper placeholder:text-paper/30 focus:outline-none"
+                className="h-16 flex-1 bg-transparent text-base text-white placeholder:text-white/60 focus:outline-none"
                 aria-label="Search the price list"
                 autoComplete="off"
               />
               <button
                 type="button"
                 onClick={onClose}
-                className="shrink-0 rounded-pill border border-ink-600 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-widest text-paper/40"
+                className="shrink-0 rounded-pill border border-ink-600 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-widest text-white/70"
               >
                 Esc
               </button>
@@ -112,7 +112,7 @@ export default function SearchOverlay({ open, onClose }) {
                   <p className="eyebrow mb-4">Try</p>
                   <div className="flex flex-wrap gap-2">
                     {QUICK.map((term) => (
-                      <button key={term} type="button" onClick={() => setQuery(term)} className="chip">
+                      <button key={term} type="button" onClick={() => setQuery(term)} className="chip !text-white">
                         {term}
                       </button>
                     ))}

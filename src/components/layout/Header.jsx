@@ -76,7 +76,7 @@ export default function Header() {
         className="fixed inset-x-0 top-0 z-50"
       >
         {/* Announcement strip — one rotating fact, not a marquee of slogans */}
-        <div className="border-b border-paper/[0.07] bg-[#7a0c0c]/95 backdrop-blur-sm">
+        <div className="border-b border-white/10 bg-[#32080B] backdrop-blur-sm">
           <div className="shell flex h-9 items-center justify-between gap-4 text-[0.68rem]">
             <div className="flex items-center gap-2 overflow-hidden">
               <span className="h-1 w-1 shrink-0 animate-flicker rounded-full bg-gold" />
@@ -87,7 +87,7 @@ export default function Header() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -9, opacity: 0 }}
                   transition={{ duration: 0.35 }}
-                  className="whitespace-nowrap font-mono uppercase tracking-[0.18em] text-paper/50"
+                  className="whitespace-nowrap font-mono uppercase tracking-[0.18em] text-white"
                 >
                   {TICKER[tick]}
                 </motion.span>
@@ -95,7 +95,7 @@ export default function Header() {
             </div>
             <a
               href={`tel:+91${SHOP.phone}`}
-              className="hidden shrink-0 font-mono uppercase tracking-[0.18em] text-paper/45 transition-colors hover:text-gold sm:block"
+              className="hidden shrink-0 font-mono uppercase tracking-[0.18em] text-white transition-colors hover:text-gold sm:block"
             >
               {SHOP.phoneDisplay}
             </a>

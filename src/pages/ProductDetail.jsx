@@ -77,15 +77,15 @@ export default function ProductDetail() {
                 label={product.name}
                 className="h-full w-full"
               />
-              <span className="num absolute left-5 top-5 text-2xs tracking-widest text-paper/30">
+              <span className="num absolute left-5 top-5 text-2xs tracking-widest text-white/70">
                 Line {pad(product.sno, 3)}
               </span>
-              <span className="num absolute right-5 top-5 rounded-pill bg-ember px-2.5 py-1 text-[0.62rem] font-semibold text-paper">
+              <span className="num absolute right-5 top-5 rounded-pill bg-[#32080B] px-2.5 py-1 text-[0.62rem] font-semibold text-white">
                 −{product.discount}%
               </span>
             </motion.div>
 
-            <p className="mt-4 flex items-center gap-2 text-xs text-paper/30">
+            <p className="mt-4 flex items-center gap-2 text-xs text-[#32080B]/55">
               <Icon name="info" size={13} />
               Illustration, not a photograph. Packaging design varies by manufacturing batch.
             </p>
@@ -98,21 +98,21 @@ export default function ProductDetail() {
               <Icon name="chevron" size={11} />
             </Link>
 
-            <h1 className="text-headline text-balance">{product.name}</h1>
+            <h1 className="text-headline text-balance text-[#32080B]">{product.name}</h1>
             <p className="ta mt-2 text-xl text-gold/75">{product.nameTa}</p>
 
-            <div className="mt-8 flex flex-wrap items-end gap-5 border-y border-ink-600 py-7">
+            <div className="mt-8 flex flex-wrap items-end gap-5 border-y border-[#32080B]/15 py-7">
               <div>
                 <p className="eyebrow mb-2">Counter rate</p>
                 <div className="flex items-baseline gap-3">
                   <span className="num text-4xl font-bold text-gold">{money(product.price)}</span>
-                  <span className="num strike text-base">{money(product.mrp)}</span>
+                  <span className="num strike text-base !text-[#32080B]/35">{money(product.mrp)}</span>
                 </div>
                 <p className="num mt-1.5 text-xs text-leaf">You save {money(product.saving)} on this line</p>
               </div>
               <div className="ml-auto text-right">
                 <p className="eyebrow mb-2">Sold as</p>
-                <p className="num text-lg font-semibold text-paper">{product.unit}</p>
+                <p className="num text-lg font-semibold text-[#32080B]">{product.unit}</p>
               </div>
             </div>
 
@@ -123,20 +123,20 @@ export default function ProductDetail() {
                 <button
                   type="button"
                   onClick={() => add(product.slug, qty, { open: true })}
-                  className="btn btn-ember flex-1 sm:flex-none sm:px-8"
+                  className="btn flex-1 bg-[#32080B] text-white shadow-[0_18px_40px_-18px_rgba(50,8,11,.65)] hover:bg-[#4a1115] sm:flex-none sm:px-8"
                 >
                   Add {qty} to the sheet — {money(product.price * qty)}
                 </button>
               </div>
 
               {inCart > 0 && (
-                <p className="mt-3 flex items-center gap-2 text-sm text-paper/50">
+                <p className="mt-3 flex items-center gap-2 text-sm text-[#32080B]/65">
                   <Icon name="check" size={14} className="text-leaf" />
                   {inCart} already on your sheet.
                   <button
                     type="button"
                     onClick={() => setQty(product.slug, 0)}
-                    className="text-ember underline-offset-4 hover:underline"
+                    className="text-[#32080B] underline-offset-4 hover:underline"
                   >
                     Remove
                   </button>
@@ -147,19 +147,19 @@ export default function ProductDetail() {
             {/* notes */}
             <ul className="mt-9 space-y-3">
               {notes.map((note) => (
-                <li key={note} className="flex gap-3 text-[0.9rem] leading-relaxed text-paper/55">
-                  <Icon name="spark" size={14} className="mt-1 shrink-0 text-gold/60" />
+                <li key={note} className="flex gap-3 text-[0.9rem] leading-relaxed text-[#32080B]">
+                  <Icon name="spark" size={14} className="mt-1 shrink-0 text-[#32080B]" />
                   {note}
                 </li>
               ))}
             </ul>
 
-            <div className="mt-9 flex flex-wrap gap-3 border-t border-ink-600 pt-7">
-              <a href={enquiryUrl(product.name)} target="_blank" rel="noreferrer" className="btn btn-ghost">
+            <div className="mt-9 flex flex-wrap gap-3 border-t border-[#32080B]/15 pt-7">
+              <a href={enquiryUrl(product.name)} target="_blank" rel="noreferrer" className="btn !border-[#32080B] !bg-[#32080B] !text-white hover:!bg-[#4a1115]">
                 <Icon name="whatsapp" size={15} filled />
                 Ask about this line
               </a>
-              <a href={`tel:+91${SHOP.phone}`} className="btn btn-ghost">
+              <a href={`tel:+91${SHOP.phone}`} className="btn !border-[#32080B] !bg-[#32080B] !text-white hover:!bg-[#4a1115]">
                 <Icon name="phone" size={15} />
                 {SHOP.phoneDisplay}
               </a>
@@ -169,11 +169,11 @@ export default function ProductDetail() {
 
         {/* related */}
         {related.length > 0 && (
-          <section className="mt-24 border-t border-ink-600 pt-14">
-            <Reveal as="h2" className="text-title mb-2">
+          <section className="mt-24 border-t border-[#32080B]/15 pt-14">
+            <Reveal as="h2" className="text-title mb-2 text-[#32080B]">
               Nearest on the same shelf
             </Reveal>
-            <Reveal as="p" delay={0.05} className="mb-9 text-sm text-paper/45">
+            <Reveal as="p" delay={0.05} className="mb-9 text-sm text-[#32080B]/75">
               Closest in price within {category.name}.
             </Reveal>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

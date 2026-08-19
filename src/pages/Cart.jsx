@@ -28,8 +28,8 @@ function Field({ id, label, hint, error, touched, children }) {
   return (
     <div>
       <label htmlFor={id} className="mb-2 flex items-baseline justify-between gap-3">
-        <span className="text-sm font-medium text-paper">{label}</span>
-        {hint && <span className="text-2xs text-paper/30">{hint}</span>}
+        <span className="text-sm font-medium text-[#32080B]">{label}</span>
+        {hint && <span className="text-2xs text-[#32080B]/45">{hint}</span>}
       </label>
       {children}
       <AnimatePresence>
@@ -127,8 +127,8 @@ export default function Cart() {
       description="Review your crackers order and send it to the Veyila Crackers counter on WhatsApp."
       canonical="/cart"
       trail={[{ label: 'Order sheet' }]}
-      eyebrow={`Reference ${reference}`}
-      heading="Check the sheet, then send it"
+      eyebrow={<span className="text-[#32080B]">Reference {reference}</span>}
+      heading={<span className="text-[#32080B]">Check the sheet, then send it</span>}
       lead="Nothing is charged here. Pressing send opens WhatsApp with the order already written out — we reply with stock confirmation and payment details."
     >
       <div className="shell grid gap-12 pb-32 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
@@ -238,8 +238,8 @@ export default function Cart() {
 
           {/* ---------------- delivery ---------------- */}
           <section id="delivery" className="mt-12 scroll-mt-32">
-            <h2 className="text-title mb-2">Where is it going?</h2>
-            <p className="mb-7 text-sm text-paper/45">
+            <h2 className="text-title mb-2 text-[#32080B]">Where is it going?</h2>
+            <p className="mb-7 text-sm text-[#32080B]/60">
               These three lines go into the WhatsApp message. We don't store them anywhere except your own browser.
             </p>
 
@@ -250,7 +250,7 @@ export default function Cart() {
                   value={customer.name}
                   onChange={(event) => setCustomer({ name: event.target.value })}
                   onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-                  className="field"
+                  className="field !border-[#32080B]/20 !bg-white !text-[#32080B] placeholder:!text-[#32080B]/35 focus:!border-[#32080B]"
                   placeholder="Name for the parcel"
                   autoComplete="name"
                 />
@@ -262,7 +262,7 @@ export default function Cart() {
                   value={customer.phone}
                   onChange={(event) => setCustomer({ phone: event.target.value })}
                   onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
-                  className="field"
+                  className="field !border-[#32080B]/20 !bg-white !text-[#32080B] placeholder:!text-[#32080B]/35 focus:!border-[#32080B]"
                   placeholder="98765 43210"
                   inputMode="numeric"
                   autoComplete="tel"
@@ -277,7 +277,7 @@ export default function Cart() {
                     onChange={(event) => setCustomer({ address: event.target.value })}
                     onBlur={() => setTouched((t) => ({ ...t, address: true }))}
                     rows={3}
-                    className="field resize-none"
+                    className="field resize-none !border-[#32080B]/20 !bg-white !text-[#32080B] placeholder:!text-[#32080B]/35 focus:!border-[#32080B]"
                     placeholder="Door number, street, area, city, pin code"
                     autoComplete="street-address"
                   />
@@ -289,7 +289,7 @@ export default function Cart() {
                   id="landmark"
                   value={customer.landmark}
                   onChange={(event) => setCustomer({ landmark: event.target.value })}
-                  className="field"
+                  className="field !border-[#32080B]/20 !bg-white !text-[#32080B] placeholder:!text-[#32080B]/35 focus:!border-[#32080B]"
                   placeholder="Opposite the school gate"
                 />
               </Field>
@@ -299,7 +299,7 @@ export default function Cart() {
                   id="notes"
                   value={customer.notes}
                   onChange={(event) => setCustomer({ notes: event.target.value })}
-                  className="field"
+                  className="field !border-[#32080B]/20 !bg-white !text-[#32080B] placeholder:!text-[#32080B]/35 focus:!border-[#32080B]"
                   placeholder="Nothing loud, deliver before the 18th…"
                 />
               </Field>
@@ -309,24 +309,24 @@ export default function Cart() {
 
         {/* ---------------- summary ---------------- */}
         <aside className="lg:sticky lg:top-32 lg:self-start">
-          <div className="card-night p-6 lg:p-7">
+          <div className="rounded-2xl border border-[#32080B]/20 bg-[#32080B] p-6 text-white shadow-[0_18px_40px_-24px_rgba(50,8,11,0.65)] lg:p-7">
             <h2 className="eyebrow mb-5">Order total</h2>
 
             <dl className="space-y-3 text-sm">
               <div className="flex justify-between">
-                <dt className="text-paper/50">List price ({totals.count} packs)</dt>
+                <dt className="text-white/65">List price ({totals.count} packs)</dt>
                 <dd className="num strike">{money(totals.listTotal)}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-paper/50">Festival discount</dt>
+                <dt className="text-white/65">Festival discount</dt>
                 <dd className="num text-leaf">− {money(totals.savings)}</dd>
               </div>
               <div className="flex justify-between border-t border-ink-600 pt-3">
-                <dt className="text-paper/50">Delivery</dt>
-                <dd className="text-paper/70">{belowMinimum ? 'Counter pickup' : 'Quoted on confirmation'}</dd>
+                <dt className="text-white/65">Delivery</dt>
+                <dd className="text-white/80">{belowMinimum ? 'Counter pickup' : 'Quoted on confirmation'}</dd>
               </div>
               <div className="flex items-baseline justify-between border-t border-ink-600 pt-3">
-                <dt className="text-base text-paper">Total</dt>
+                <dt className="text-base text-white">Total</dt>
                 <dd className="num text-3xl font-bold text-gold">{money(totals.subtotal)}</dd>
               </div>
             </dl>
@@ -350,7 +350,7 @@ export default function Cart() {
               Send order on WhatsApp
             </a>
 
-            <p className="mt-3 text-center text-xs leading-relaxed text-paper/35">
+            <p className="mt-3 text-center text-xs leading-relaxed text-white/60">
               Opens WhatsApp with the full list typed out. Nothing is charged now — we confirm stock first.
             </p>
 
@@ -361,11 +361,11 @@ export default function Cart() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-5 rounded-lg border border-leaf/30 bg-leaf/[0.08] p-4"
                 >
-                  <p className="mb-1.5 flex items-center gap-2 text-sm font-medium text-paper">
+                  <p className="mb-1.5 flex items-center gap-2 text-sm font-medium text-white">
                     <Icon name="check" size={15} className="text-leaf" />
                     Sent to the counter
                   </p>
-                  <p className="text-xs leading-relaxed text-paper/55">
+                  <p className="text-xs leading-relaxed text-white/70">
                     Quote reference {reference} if you call. Your sheet stays here in case you want to add to it — clear
                     it once the order is confirmed.
                   </p>
@@ -373,7 +373,7 @@ export default function Cart() {
               )}
             </AnimatePresence>
 
-            <div className="mt-6 space-y-2.5 border-t border-ink-600 pt-5 text-xs text-paper/40">
+            <div className="mt-6 space-y-2.5 border-t border-white/15 pt-5 text-xs text-white/65">
               {[
                 ['clock', 'Dispatch within 48 hours of payment'],
                 ['truck', 'Surface carrier only — fireworks cannot go by air'],
@@ -388,12 +388,12 @@ export default function Cart() {
           </div>
 
           {/* what the shop will receive */}
-          <details className="card-night group mt-4 p-5">
-            <summary className="flex cursor-pointer items-center justify-between text-sm text-paper/60 marker:content-none">
+          <details className="group mt-4 rounded-2xl border border-[#32080B]/20 bg-[#32080B] p-5 text-white shadow-[0_18px_40px_-24px_rgba(50,8,11,0.65)]">
+            <summary className="flex cursor-pointer items-center justify-between text-sm text-white/80 marker:content-none">
               Preview the WhatsApp message
               <Icon name="chevronDown" size={15} className="transition-transform group-open:rotate-180" />
             </summary>
-            <pre className="no-bar mt-4 max-h-64 overflow-auto whitespace-pre-wrap break-words border-t border-ink-600 pt-4 font-mono text-[0.68rem] leading-relaxed text-paper/45">
+            <pre className="no-bar mt-4 max-h-64 overflow-auto whitespace-pre-wrap break-words border-t border-white/15 pt-4 font-mono text-[0.68rem] leading-relaxed text-white/65">
               {message}
             </pre>
           </details>

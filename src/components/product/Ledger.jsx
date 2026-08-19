@@ -167,9 +167,11 @@ export default function Ledger({ products, grouped = true, caption = 'Price list
       <div className="flex flex-wrap items-end justify-between gap-3 border-b-2 border-ink/20 px-3 pb-3 pt-5 sm:px-5">
         <div>
           <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-ink/45">Veyila Crackers</p>
-          <h2 className="font-display text-2xl font-bold leading-none text-ink">
+          <h2 className="font-display text-2xl font-bold leading-none text-gold">
             Estimate sheet
-            <span className="ta ml-2.5 text-base font-medium text-ink/50">மதிப்பீட்டுப் பட்டியல்</span>
+            <span className="ta ml-2.5 text-base font-medium" style={{ color: '#32080B' }}>
+              மதிப்பீட்டுப் பட்டியல்
+            </span>
           </h2>
         </div>
         <p className="num text-[0.66rem] uppercase tracking-[0.16em] text-ink/40">

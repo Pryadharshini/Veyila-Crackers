@@ -58,7 +58,7 @@ export default function Categories() {
       }
     >
       <div className="shell pb-24">
-        <div className="grid auto-rows-[minmax(0,1fr)] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-[minmax(0,1fr)] grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {CATEGORIES.map((category, index) => {
             const wide = category.count >= max * 0.6;
             return (
@@ -142,12 +142,12 @@ export function CategoryDetail() {
       canonical={`/categories/${category.id}`}
       trail={[{ to: '/categories', label: 'Categories' }, { label: category.name }]}
       eyebrow={
-        <span className="text-[#FFC93C]">
+        <span className="text-[#32080B]">
           Shelf {pad(index + 1)} of {CATEGORIES.length}
         </span>
       }
-      heading={<span className="text-white">{category.name}</span>}
-      lead={<span className="text-white/60">{category.blurb}</span>}
+      heading={<span className="text-[#32080B]">{category.name}</span>}
+      lead={<span className="text-[#32080B]/60">{category.blurb}</span>}
     >
       <div className="shell pb-24">
         <p className="ta -mt-4 mb-8 text-lg text-[#FFC93C]/80">{category.nameTa}</p>

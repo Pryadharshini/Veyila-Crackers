@@ -227,10 +227,10 @@ export function CategoryRail() {
 
       <div className="relative mx-auto max-w-[1300px]">
         <div
-          ref={scrollerRef}
-          className="grid auto-cols-[calc(100%-3rem)] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-6 pb-2 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-8 md:auto-cols-[33%] lg:auto-cols-[calc((100%-4*1.25rem)/5)] lg:px-10"
-          style={{ scrollbarWidth: 'none' }}
-        >
+  ref={scrollerRef}
+  className="grid auto-cols-[calc(100%-5rem)] grid-flow-col gap-5 overflow-x-auto scroll-smooth pl-8 pr-6 pb-2 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-8 md:auto-cols-[33%] lg:auto-cols-[calc((100%-4*1.25rem)/5)] lg:px-10"
+  style={{ scrollbarWidth: 'none', scrollPaddingLeft: '2rem' }}
+>
           {homeCategories.map((category) => (
             <Link
               key={category.id}
@@ -257,7 +257,6 @@ export function CategoryRail() {
     </section>
   );
 }
-
 /* ================================================================== */
 /* 2b · Combo showcase — "combo offers" card rail on the bc.png backdrop */
 /* ================================================================== */
@@ -352,17 +351,21 @@ export function ComboShowcase() {
 
         <div
           ref={scrollerRef}
-          className="grid auto-cols-[calc(100%-5rem)] grid-flow-col gap-5 overflow-x-auto scroll-smooth px-10 pb-3 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-12 md:auto-cols-[31%] lg:auto-cols-[calc((100%-3*1.25rem)/4)] lg:px-16"
+          className="grid auto-cols-[calc(100%-5rem)] grid-flow-col gap-5 overflow-x-auto scroll-smooth pb-3 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden sm:auto-cols-[46%] sm:px-12 md:auto-cols-[31%] lg:auto-cols-[calc((100%-3*1.25rem)/4)] lg:px-16"
           style={{ scrollbarWidth: 'none' }}
         >
-          {COMBOS.map((combo) => {
+          {COMBOS.map((combo, index) => {
             const image = comboImage(combo);
+            const isFirst = index === 0;
+            const isLast = index === COMBOS.length - 1;
 
             return (
               <Link
                 key={combo.id}
                 to={`/combos#${combo.slug}`}
-                className="group relative flex snap-start flex-col rounded-[1.5rem] border border-white/10 bg-[#fff8ee] p-4 pb-5 shadow-[0_18px_36px_-18px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:-translate-y-1"
+                className={`group relative flex snap-start flex-col rounded-[1.5rem] border border-white/10 bg-[#fff8ee] p-4 pb-5 shadow-[0_18px_36px_-18px_rgba(0,0,0,0.65)] transition-transform duration-300 hover:-translate-y-1 ${
+                  isFirst ? 'ml-8 sm:ml-0' : ''
+                } ${isLast ? 'mr-8 sm:mr-0' : ''}`}
               >
                 {image ? (
                   <span className="mb-4 grid aspect-[4/3] place-items-center overflow-hidden rounded-[1.1rem] bg-gradient-to-br from-[#fff6e6] to-[#fbe3bf] p-2">
@@ -429,7 +432,6 @@ export function ComboShowcase() {
     </section>
   );
 }
-
 /* ================================================================== */
 /* 3 · Editorial feature — one product, told properly                  */
 /* ================================================================== */

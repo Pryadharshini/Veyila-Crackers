@@ -71,7 +71,7 @@ export default function Page({
             <div className="max-w-3xl">
               {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
               {heading && <h1 className="text-headline text-balance">{heading}</h1>}
-              {lead && <p className="mt-5 max-w-xl text-pretty leading-relaxed text-paper/55">{lead}</p>}
+              {lead && <p className="mt-5 max-w-xl text-pretty leading-relaxed text-[#32080B]/55">{lead}</p>}
             </div>
             {aside && <div className="shrink-0">{aside}</div>}
           </div>

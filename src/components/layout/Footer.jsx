@@ -53,7 +53,7 @@ export default function Footer() {
               href={enquiryUrl()}
               target="_blank"
               rel="noreferrer"
-              className="btn btn-ghost mt-7"
+              className="btn btn-ghost mt-7 text-white"
             >
               <Icon name="whatsapp" size={16} filled />
               WhatsApp {SHOP.phoneDisplay}
@@ -126,10 +126,10 @@ export default function Footer() {
             </dl>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              <a href={telUrl} className="chip">
+              <a href={telUrl} className="chip !text-white">
                 <Icon name="phone" size={13} /> Call
               </a>
-              <a href={mapsUrl} target="_blank" rel="noreferrer" className="chip">
+              <a href={mapsUrl} target="_blank" rel="noreferrer" className="chip !text-white">
                 <Icon name="pin" size={13} /> Directions
               </a>
             </div>

@@ -16,16 +16,16 @@ export default function Breadcrumbs({ trail = [], className = '' }) {
           return (
             <span key={`${item.label}-${index}`} className="flex items-center gap-1.5">
               {last || !item.to ? (
-                <span className="font-mono uppercase tracking-[0.16em] text-paper/40">{item.label}</span>
+                <span className="font-mono uppercase tracking-[0.16em] text-[#32080B]/40">{item.label}</span>
               ) : (
                 <Link
                   to={item.to}
-                  className="font-mono uppercase tracking-[0.16em] text-paper/55 transition-colors hover:text-gold"
+                  className="font-mono uppercase tracking-[0.16em] text-[#32080B]/55 transition-colors hover:text-gold"
                 >
                   {item.label}
                 </Link>
               )}
-              {!last && <Icon name="chevron" size={11} className="text-paper/20" />}
+              {!last && <Icon name="chevron" size={11} className="text-[#32080B]/20" />}
             </span>
           );
         })}

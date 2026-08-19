@@ -321,9 +321,9 @@ export function Testimonials() {
 
       <div className="group mt-12 space-y-4">
         {[VOICES, [...VOICES].reverse()].map((row, rowIndex) => (
-          <div key={rowIndex} className="edge-fade flex overflow-hidden">
+          <div key={rowIndex} className="edge-fade flex overflow-hidden pl-8 pr-8 sm:pl-12 sm:pr-12">
             <div
-              className="flex shrink-0 gap-4 group-hover:[animation-play-state:paused]"
+              className="flex shrink-0 gap-6 group-hover:[animation-play-state:paused]"
               style={{
                 animation: `marquee ${rowIndex === 0 ? 52 : 64}s linear infinite`,
                 animationDirection: rowIndex === 0 ? 'normal' : 'reverse',
@@ -332,18 +332,18 @@ export function Testimonials() {
               {[...row, ...row].map((voice, index) => (
                 <figure
                   key={`${voice.name}-${index}`}
-                  className="w-[22rem] shrink-0 rounded-card border border-[#f0e6d8] bg-[#fff5e6] p-6"
+                  className="w-[calc(100vw-5rem)] max-w-[24rem] shrink-0 rounded-card border border-[#f0e6d8] bg-[#fff5e6] p-6 sm:w-[20rem]"
                 >
                   <Icon name="spark" size={16} className="mb-4 text-[#d7722d]/60" />
                   <blockquote className="text-pretty text-[0.9rem] leading-relaxed text-ink/70">
                     {voice.quote}
                   </blockquote>
-                  <figcaption className="mt-5 flex items-baseline justify-between border-t border-[#f0e6d8] pt-4">
-                    <span className="text-sm font-medium text-ink">
+                  <figcaption className="mt-5 flex flex-col gap-3 border-t border-[#f0e6d8] pt-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-0">
+                    <span className="flex flex-wrap items-baseline gap-x-2 text-sm font-medium text-ink">
                       {voice.name}
-                      <span className="ml-2 text-ink/35">{voice.place}</span>
+                      <span className="text-ink/35">{voice.place}</span>
                     </span>
-                    <span className="num text-[0.62rem] uppercase tracking-wider text-ink/25">{voice.order}</span>
+                    <span className="num text-[0.62rem] uppercase tracking-wider text-ink/25 sm:text-right">{voice.order}</span>
                   </figcaption>
                 </figure>
               ))}
@@ -354,7 +354,6 @@ export function Testimonials() {
     </section>
   );
 }
-
 /* ================================================================== */
 /* FAQ                                                                 */
 /* ================================================================== */
