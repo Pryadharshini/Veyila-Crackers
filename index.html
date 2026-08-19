@@ -59,23 +59,122 @@
   <body>
     <div id="root">
       <!-- Pre-hydration shell: keeps the first paint dark so the page never
-           flashes white before React mounts. -->
+           flashes white before React mounts, with a small firework-burst
+           animation themed to the shop. -->
       <div
         style="
           position: fixed;
           inset: 0;
           display: grid;
           place-items: center;
-          background: #120b0a;
-          color: #e9b44c;
+          background: radial-gradient(circle at 50% 45%, #1c1210 0%, #120b0a 70%);
           font-family: system-ui, sans-serif;
-          letter-spacing: 0.3em;
-          font-size: 11px;
-          text-transform: uppercase;
+          overflow: hidden;
         "
       >
-        Lighting the fuse
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+          <div style="position: relative; width: 120px; height: 140px;">
+            <!-- rocket trail -->
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 2px;
+                height: 46px;
+                background: linear-gradient(to top, transparent, #e9b44c);
+                transform: translateX(-50%);
+                animation: veyila-trail 1.6s cubic-bezier(0.3, 0, 0.6, 1) infinite;
+              "
+            ></div>
+
+            <!-- burst core -->
+            <div
+              style="
+                position: absolute;
+                top: 8px;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                margin-left: -3px;
+                border-radius: 50%;
+                background: #fff3d6;
+                box-shadow: 0 0 14px 4px rgba(233, 180, 76, 0.9);
+                animation: veyila-flash 1.6s ease-out infinite;
+              "
+            ></div>
+
+            <!-- 8 radiating sparks -->
+            <div style="position: absolute; top: 8px; left: 50%; width: 0; height: 0;">
+              <span
+                style="--a: 0deg; animation-delay: 0s"
+                class="veyila-spark"
+              ></span>
+              <span style="--a: 45deg" class="veyila-spark"></span>
+              <span style="--a: 90deg" class="veyila-spark"></span>
+              <span style="--a: 135deg" class="veyila-spark"></span>
+              <span style="--a: 180deg" class="veyila-spark"></span>
+              <span style="--a: 225deg" class="veyila-spark"></span>
+              <span style="--a: 270deg" class="veyila-spark"></span>
+              <span style="--a: 315deg" class="veyila-spark"></span>
+            </div>
+          </div>
+
+          <span
+            style="
+              color: #e9b44c;
+              letter-spacing: 0.3em;
+              font-size: 11px;
+              text-transform: uppercase;
+              animation: veyila-fade 1.6s ease-in-out infinite;
+            "
+          >
+            Lighting the fuse
+          </span>
+        </div>
       </div>
+
+      <style>
+        .veyila-spark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 3px;
+          height: 3px;
+          margin: -1.5px 0 0 -1.5px;
+          border-radius: 50%;
+          background: #e2492c;
+          transform: rotate(var(--a)) translateX(0);
+          opacity: 0;
+          animation: veyila-burst 1.6s ease-out infinite;
+        }
+        .veyila-spark:nth-child(odd) {
+          background: #e9b44c;
+        }
+
+        @keyframes veyila-trail {
+          0% { height: 0; opacity: 0; bottom: 0; }
+          35% { height: 46px; opacity: 1; bottom: 0; }
+          45% { height: 10px; opacity: 0; bottom: 46px; }
+          100% { height: 0; opacity: 0; bottom: 46px; }
+        }
+        @keyframes veyila-flash {
+          0%, 40% { transform: scale(0); opacity: 0; }
+          48% { transform: scale(1.4); opacity: 1; }
+          60% { transform: scale(1); opacity: 1; }
+          100% { transform: scale(0.8); opacity: 0; }
+        }
+        @keyframes veyila-burst {
+          0%, 44% { opacity: 0; transform: rotate(var(--a)) translateX(0); }
+          52% { opacity: 1; transform: rotate(var(--a)) translateX(10px); }
+          85% { opacity: 0.4; transform: rotate(var(--a)) translateX(38px); }
+          100% { opacity: 0; transform: rotate(var(--a)) translateX(44px); }
+        }
+        @keyframes veyila-fade {
+          0%, 100% { opacity: 0.55; }
+          50% { opacity: 1; }
+        }
+      </style>
     </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
