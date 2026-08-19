@@ -237,7 +237,7 @@ export function CategoryRail() {
               to={`/categories/${category.id}`}
               className="group flex snap-start flex-col items-center rounded-[1.6rem] border border-[#f5dfc0] bg-[#32080B] px-4 py-6 text-center shadow-[0_10px_24px_-20px_rgba(24,18,12,0.4)] transition-transform duration-300 hover:-translate-y-1"
             >
-              <span className="mb-4 grid h-36 w-36 place-items-center overflow-hidden rounded-2xl bg-[#fbe3bf] transition-colors group-hover:bg-[#f8d7a3] sm:h-44 sm:w-44">
+              <span className="mb-4 grid h-44 w-44 place-items-center overflow-hidden rounded-2xl bg-[#fbe3bf] transition-colors group-hover:bg-[#f8d7a3] sm:h-52 sm:w-52">
                 <img
                   src={CATEGORY_IMAGES[category.id] ?? '/assets/download.jpg'}
                   alt=""
@@ -672,7 +672,7 @@ export function ShopStory() {
               </p>
             </div>
             <ActionButton to="/products" variant="outline" className="mt-8">
-              EXPLORE PRICE LIST →
+              EXPLORE PRICE LIST 
             </ActionButton>
           </Reveal>
 

@@ -79,13 +79,19 @@ export default function ProductCard({ product, index = 0, priority = false }) {
   const { qtyOf, add, setQty } = useCart();
   const inSheet = qtyOf(product.slug);
 
-  const [draft, setDraft] = useState(1);
+  const [draft, setDraft] = useState(0);
   const shown = inSheet > 0 ? inSheet : draft;
 
   const step = (delta) => {
-    const next = Math.max(inSheet > 0 ? 0 : 1, shown + delta);
+    const next = Math.max(0, shown + delta);
     if (inSheet > 0) setQty(product.slug, next);
     else setDraft(next);
+  };
+
+  const addToCart = () => {
+    const quantity = shown > 0 ? shown : 1;
+    if (inSheet > 0) setQty(product.slug, inSheet + quantity);
+    else add(product.slug, quantity);
   };
 
   return (
@@ -152,7 +158,7 @@ export default function ProductCard({ product, index = 0, priority = false }) {
 
           <button
             type="button"
-            onClick={() => (inSheet > 0 ? setQty(product.slug, inSheet + draft) : add(product.slug, draft))}
+            onClick={addToCart}
             className="grid h-8 w-9 shrink-0 place-items-center rounded-md bg-[#32080B] text-white transition-colors hover:bg-[#4a1115]"
             aria-label={`Put ${shown} × ${product.name} on your order sheet`}
           >

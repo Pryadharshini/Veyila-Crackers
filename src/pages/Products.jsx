@@ -161,9 +161,9 @@ export default function Products() {
 
             {results.length === 0 ? (
               <EmptyState
-                title={<span className="text-white">Nothing matches those filters</span>}
+                title={<span className="text-[#32080B]">Nothing matches those filters</span>}
                 body={
-                  <span className="text-white/60">
+                  <span className="text-yellow/70">
                     Loosen a price band or clear the categories — the full list has {TOTALS.products} lines and one of
                     them is probably the one you want.
                   </span>

@@ -97,12 +97,12 @@ export default function Hero() {
       <div className="shell relative pt-8">
         <div className="grid items-end gap-12">
           {/* copy */}
-          <div data-hero-copy className="max-w-3xl pt-4">
+          <div data-hero-copy className="mx-auto max-w-3xl pt-4 text-center sm:mx-0 sm:text-left">
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="mb-6 flex items-center gap-3 font-mono text-[0.72rem] font-bold uppercase tracking-[0.22em] text-paper"
+              className="mb-6 flex items-center justify-center gap-3 font-mono text-[0.72rem] font-bold uppercase tracking-[0.22em] text-paper sm:justify-start"
             >
               Celebrate every moment
             </motion.p>
@@ -132,7 +132,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.42 }}
-              className="mt-5 flex items-center gap-3 font-mono text-sm font-semibold uppercase tracking-[0.2em]"
+              className="mt-5 flex items-center justify-center gap-3 font-mono text-sm font-semibold uppercase tracking-[0.2em] sm:justify-start"
               style={{ color: '#f5c518' }}
             >
               <span aria-hidden="true">✱</span>
@@ -144,7 +144,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.54 }}
-              className="mt-6 max-w-lg text-pretty text-[1.05rem] leading-relaxed text-paper/75"
+              className="mx-auto mt-6 max-w-lg text-pretty text-[1.05rem] leading-relaxed text-paper/75 sm:mx-0"
             >
               Premium fireworks for brighter celebrations, joyful families and unforgettable moments.
             </motion.p>

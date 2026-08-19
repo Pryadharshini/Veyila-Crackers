@@ -18,7 +18,6 @@ export const NAV = [
   { to: '/contact', label: 'Contact' },
 ];
 
-/** Rotating strip of things that are actually true about this shop. */
 const TICKER = [
   `${TOTALS.products} lines in stock`,
   '80% off the printed list',
@@ -48,7 +47,6 @@ export default function Header() {
     return () => clearInterval(timer);
   }, []);
 
-  /* Cmd/Ctrl-K opens search, the way people expect from a catalogue. */
   useEffect(() => {
     const onKey = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
@@ -75,9 +73,8 @@ export default function Header() {
         transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-x-0 top-0 z-50"
       >
-        {/* Announcement strip — one rotating fact, not a marquee of slogans */}
         <div className="border-b border-white/10 bg-[#32080B] backdrop-blur-sm">
-          <div className="shell flex h-9 items-center justify-between gap-4 text-[0.68rem]">
+          <div className="shell flex h-9 items-center justify-center gap-4 text-[0.68rem] sm:justify-between">
             <div className="flex items-center gap-2 overflow-hidden">
               <span className="h-1 w-1 shrink-0 animate-flicker rounded-full bg-gold" />
               <AnimatePresence mode="wait">
@@ -93,6 +90,7 @@ export default function Header() {
                 </motion.span>
               </AnimatePresence>
             </div>
+
             <a
               href={`tel:+91${SHOP.phone}`}
               className="hidden shrink-0 font-mono uppercase tracking-[0.18em] text-white transition-colors hover:text-gold sm:block"
